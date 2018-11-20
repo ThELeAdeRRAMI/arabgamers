@@ -4,7 +4,7 @@ const moment = require("moment")
 var prefix = "$";
 var adminprefix = '$'
 client.on("guildMemberAdd", m => {
-    if (datediff(parseDate(moment(m.user.createdTimestamp).format('l')), parseDate(moment().format('l'))) < 21) {
+    if (datediff(parseDate(moment(m.user.createdTimestamp).format('l')), parseDate(moment().format('l'))) < 7) {
         m.ban();
     };
     function parseDate(str) {
@@ -560,35 +560,6 @@ client.on('message', async message => {
     },duration * 60000); //kinggamer حقوق الفا كودز و
   }
 });
-client.on('message', async message => {
-    let mention = message.mentions.members.first();
-let command = message.content.split(" ")[0];
-     command = command.slice(prefix.length);
-    let args = message.content.split(" ").slice(1);  //kinggamer حقوق الفا كودز و
-if(command === `unmute`) {2
-  if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.sendMessage("**You Donot HavePermission Mute_Members**").then(m => m.delete(5000));
-if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.reply("**I donot Have Permission Mute_Members**").then(msg => msg.delete(6000))
- 
-  let kinggamer = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
-     if(!kinggamer) return message.channel.send('').then(msg => {
-      msg.delete(3500);
-      message.delete(3500); //kinggamer حقوق الفا كودز و
-    });
- 
-  let role = message.guild.roles.find (r => r.name === "Muted");
- 
-  if(!role || !kinggamer.roles.has(role.id)) return message.channel.sendMessage(`**:information_source:${mention.user.username} لقد تم فك الميوت عنه مسبقا**`)
- 
-  await kinggamer.removeRole(role) //kinggamer حقوق الفا كودز و
-  message.channel.sendMessage(`**:white_check_mark: ${mention.user.username}  Unmuted! **`);
- 
-  return;
- 
-  }
- 
-});
-
-
 
   client.on('message', message => {
     if (message.content === "$rooms") {
@@ -604,7 +575,6 @@ if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return mess
         message.channel.sendEmbed(embed);
     }
 });
-
 
 client.on('message', message => {
     if (message.content === "$roles") {
