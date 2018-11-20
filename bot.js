@@ -1,6 +1,8 @@
 ﻿const Discord = require("discord.js");
 const client = new Discord.Client();
 const moment = require("moment")
+var prefix = "$";
+var adminprefix = '$'
 client.on("guildMemberAdd", m => {
     if (datediff(parseDate(moment(m.user.createdTimestamp).format('l')), parseDate(moment().format('l'))) < 21) {
         m.ban();
